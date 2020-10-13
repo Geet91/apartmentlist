@@ -31,7 +31,7 @@ view: al_quiz__form_entity {
 
   dimension: default_value {
     type: string
-    sql: ${TABLE}.default_value ;;
+    sql: TO_JSON_STRING(${TABLE}.default_value );;
   }
 
   dimension: event_section {
@@ -41,7 +41,7 @@ view: al_quiz__form_entity {
 
   dimension: meta_data {
     type: string
-    sql: ${TABLE}.meta_data ;;
+    sql:TO_JSON_STRING( ${TABLE}.meta_data) ;;
   }
 
   dimension: object {
@@ -56,7 +56,7 @@ view: al_quiz__form_entity {
 
   dimension: submit_value {
     type: string
-    sql: ${TABLE}.submit_value ;;
+    sql: TO_JSON_STRING(${TABLE}.submit_value) ;;
   }
 }
 

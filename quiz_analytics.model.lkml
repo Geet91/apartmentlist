@@ -18,3 +18,24 @@ include: "/views/*.view.lkml"                # include all views in the views/ f
 #     sql_on: ${users.id} = ${orders.user_id} ;;
 #   }
 # }
+explore: al_quiz {
+  join: al_quiz_form_entity {
+    from:  al_quiz__form_entity
+    view_label: "AL QUIZ: Form Entity"
+    sql:LEFT JOIN UNNEST([${al_quiz.form_entity}]) as al_quiz_form_entity ;;
+    relationship: one_to_one
+  }
+  join: al_quiz_global_entity {
+    from: al_quiz__global_entity
+    view_label: "AL QUIZ: Global Entity"
+    sql:LEFT JOIN UNNEST([${al_quiz.global_entity}]) as al_quiz_global_entity ;;
+    relationship: one_to_one
+
+  }
+}
+explore: al_quiz_error_records {
+  join: al_quiz_error_records__attributes {
+    view_label: "Al Quiz Error Records: Attributes"
+    sql: LEFT JOIN UNNEST(${al_quiz_error_records.attributes}) as al_quiz_error_records__attributes ;;
+    relationship: one_to_many
+  }}
