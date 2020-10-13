@@ -39,3 +39,5 @@ explore: al_quiz_error_records {
     sql: LEFT JOIN UNNEST(${al_quiz_error_records.attributes}) as al_quiz_error_records__attributes ;;
     relationship: one_to_many
   }}
+
+# explore:connection_reg_r3 {}
