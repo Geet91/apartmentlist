@@ -32,6 +32,11 @@ explore: al_quiz {
     relationship: one_to_one
 
   }
+  join: users {
+    type: left_outer
+    sql_on: ${users.id} = ${al_quiz_global_entity.uid} ;;
+    relationship: one_to_one
+  }
 }
 explore: al_quiz_error_records {
   join: al_quiz_error_records__attributes {
@@ -39,5 +44,7 @@ explore: al_quiz_error_records {
     sql: LEFT JOIN UNNEST(${al_quiz_error_records.attributes}) as al_quiz_error_records__attributes ;;
     relationship: one_to_many
   }}
+
+explore: funnel_derived_table{}
 
 # explore:connection_reg_r3 {}

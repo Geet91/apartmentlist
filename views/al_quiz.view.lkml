@@ -39,6 +39,18 @@ view: al_quiz__form_entity {
     sql: ${TABLE}.event_section ;;
   }
 
+  dimension: funnel_step {
+    description: "Amenities And Area -> Commute Information And Location -> Personality And Preferences -> Lease Information ->Income Information"
+    sql: CASE
+        WHEN ${event_section} IN ('amenities', 'areas','neighborhood') THEN '(1) Amenities And Area'
+        WHEN ${event_section} IN ('commute_location', 'commute_map','commute_mode','location') THEN '(2) Commute Information And Location'
+        WHEN ${event_section} IN ('parking', 'personality','pets','price','laundry','urgency','beds','eviction') THEN '(3) Personality And Preferences'
+        WHEN ${event_section} IN ('price', 'rent','qualified','price','laundry','lease_length', 'lease_signing','move_in') THEN '(4) Lease Information'
+        WHEN ${event_section} IN ('income', 'income_qualified','not_income_qualified') THEN '(5) Income Information'
+      END
+       ;;
+  }
+
   dimension: meta_data {
     type: string
     sql:TO_JSON_STRING( ${TABLE}.meta_data) ;;
