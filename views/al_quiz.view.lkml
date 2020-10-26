@@ -2,8 +2,10 @@ view: al_quiz {
   sql_table_name: `al-poc-data-wrangling.quiz_events.al_quiz`
     ;;
 
+
   dimension: event {
     type: string
+
     sql: ${TABLE}.event ;;
   }
 

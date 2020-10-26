@@ -28,9 +28,13 @@ view: users {
     sql: ${TABLE}.CREATED_AT ;;
   }
 
-  dimension: current_sign_in_at {
-    type: string
-    sql: ${TABLE}.CURRENT_SIGN_IN_AT ;;
+  dimension_group: current_sign_in_at {
+    type:time
+    sql:
+   PARSE_DATETIME('%F', ${TABLE}.CURRENT_SIGN_IN_AT);;
+
+
+
   }
 
   dimension: current_sign_in_ip {

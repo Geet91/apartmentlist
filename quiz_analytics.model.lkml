@@ -18,6 +18,11 @@ include: "/views/*.view.lkml"                # include all views in the views/ f
 #     sql_on: ${users.id} = ${orders.user_id} ;;
 #   }
 # }
+
+access_grant: can_see_payroll{
+  allowed_values: ["finance","executive"]
+  user_attribute: team
+}
 explore: al_quiz {
   join: al_quiz_form_entity {
     from:  al_quiz__form_entity
